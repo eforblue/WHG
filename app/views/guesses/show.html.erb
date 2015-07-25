@@ -1,0 +1,12 @@
+<%- model_class = Guess -%>
+
+<div class="center_content guess_result">
+    <% if flash[:notice] %>
+      <p>
+          Your gender is <strong><%=flash[:notice] %></strong>
+      </p>
+    <% end %>
+
+    <a class="btn btn-success" href="/update?guess=right&id=<%=@guess.id%>&scale=<%=session[:scale]%>">Right</a>
+    <a class="btn btn-danger" href="/update?guess=wrong&id=<%=@guess.id%>&scale=<%=session[:scale]%>">Wrong</a>
+</div>

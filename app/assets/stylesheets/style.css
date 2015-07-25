@@ -1,0 +1,33 @@
+.title{
+    text-align: center;
+}
+
+.title strong{
+    color: #666666;
+}
+
+.center_content{
+    width: 400px;
+    margin: 0 auto;
+}
+
+#guess_weight{
+    /*display: none;*/
+}
+
+.form-horizontal .control-label {
+    text-align: left;
+}
+
+#height{
+    display: none;
+}
+
+#height_show{
+    display: block;
+    text-align: right;
+}
+
+.guess_result{
+    text-align: center;
+}

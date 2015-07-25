@@ -1,0 +1,63 @@
+<%= form_for @guess, :html => { :class => "form-horizontal guess container-fluid center_content"} do |f| %>
+
+  <% if @guess.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@guess.errors.count, "error") %> prohibited this guess from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @guess.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="form-group row">
+    <%= f.label "Weight (lb)", :class => 'control-label col-lg-4' %>
+    <div class="col-lg-offset-2 col-lg-4">
+      <input id="weight" type="text" class="form-control" name="weight">
+    </div>
+    <%=f.error_span(:weight) %>
+  </div>
+
+  <div class="form-group row">
+    <%= f.label :height, :class => 'control-label col-lg-4' %>
+    <div class="col-lg-6">
+        <div id="height_slider"></div>
+        <input id="height" type="text" class="form-control" name="height">
+        <label id="height_show"></label>
+    </div>
+    <%=f.error_span(:height) %>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-lg-offset-4 col-lg-10">
+        <span id="result"></span>
+      <%= f.submit "Guess my gender", :class => 'btn btn-primary' %>
+      <!-- <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                guesses_path, :class => 'btn btn-default' %> -->
+    </div>
+  </div>
+
+<% end %>
+
+<script type="text/javascript">
+$(function() {
+    $("#height").val(65);
+    $("#height_show").html(toInches(65));
+
+    $("#height_slider").slider({
+          min: 55,
+          max: 76,
+          value: 65,
+          slide: function(event, ui) {
+              $("#height_show").html(toInches(ui.value));
+              $("#height").val(ui.value);
+          }
+     });
+});
+
+</script>

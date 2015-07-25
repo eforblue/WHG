@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>W.H.G. a not so statistical guessing game</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+    <div class="page-header title">
+      <h1><strong>W</strong>eight. <strong>H</strong>eight. <strong>G</strong>ender.</h1>
+      <h4>a not so statistical guessing game</h4>
+    </div>
+
+    <%= yield %>
+
+</body>
+</html>
