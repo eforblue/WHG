@@ -1,28 +1,49 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a Ruby on Rails app that will guess age based on weight and height. 
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+The base data is from this website: http://www.brianmac.co.uk/idealw.htm#ref
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+* Ruby version: ruby 2.2.2p95
+
+* Rails version: Rails 4.2.3
+
+* Database creation: a startup mysql database dump can be found in db/ha_development.sql
+
+How do I tackle the problem:
+
+During my research for the base data, I found out most data sets for weights are within a range like this: 
+
+  height         |   male weight  |    female weight
+  5'3"           |    113 - 141   |      106 - 134
+
+There is a overlaps for both gender in the middle and difinitly gander domininant result on both the lower and higher end. Therefore, I boeke down the range into the following:
+
+  female min  |   male min  |  female max |  male max
+  106         |113          |          134|       141
+  |---female--|------------ even ---------|---male---|
+    dominant               dominant         dominant  
+
+
+Assuming the data is collect from 1000 people from each gender, the guess falls in male min and female max weight will get a 50\%  chance for either gender, below male min will be 100\% female, and above female max will be 100\% male initially according to the base data.
+
+The chance is calculated by using scaling data in the database. There is a female and male dominant scale for each of the 3 ranges. Initially, the 
+ * female dominant range: female scale:1000 vs male scale:0 
+ * even dominant range: female scale:1000 vs male scale:1000
+ * male dominant range: female scale:0 vs male scale:1000
+ 
+ The chance equation is:
+ 
+ scale = female scale / ( female scale + male scale)
+ chance = rand(0..1)/10 < scale
+ 
+ if chance is true, guess is female
+ if chance is fale, guess is male
+ 
+
+When people start to guess, they will be shown a guess result and a right and wrong buttons to interact with. These 2 buttons will update the database for the scales columns accordingly. For example, a girl puts in 4'10" and 42 lb, she will be shown the answer "female". When she clicks the "right" button, the database will update the female dominant scale with increment of 1. If a boy puts in 4'10" and 42 lb and clicks on the "wrong" button, the male nondominant scale will increase by 1. When many more inputs are given, the scale for female dominant will be slightly smaller than but still close 1 and more statiscally correct. 
+
+
+  
+  
