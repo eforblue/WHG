@@ -1,28 +1,13 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a Ruby on Rails app that will guess age based on weight and height. 
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+The base data is from this website: http://www.brianmac.co.uk/idealw.htm#ref
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+* Ruby version: ruby 2.2.2p95
+
+* Rails version: Rails 4.2.3
+
+* Database creation: a startup mysql database dump can be found in db/ha_development.sql
+
