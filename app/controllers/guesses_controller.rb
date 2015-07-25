@@ -36,7 +36,7 @@ class GuessesController < ApplicationController
         base_scale = @guess.scale_female_dominant.to_f / (@guess.scale_female_dominant + @guess.scale_male_nondominant)
         @gender = guess_gender(base_scale)
     elsif @guess.weight_male_min <= weight && weight <= @guess.weight_female_max
-        # between male min and female max: 50% chance of either gender
+        # between male min and female max: 50% chance of each gender
         session[:scale] = "even"
         base_scale = @guess.scale_male_even.to_f / (@guess.scale_male_even + @guess.scale_female_even)
         @gender = guess_gender(base_scale)
@@ -71,7 +71,6 @@ class GuessesController < ApplicationController
             @guess.scale_male_dominant += 1
         elsif params[:guess] == "wrong"
             @guess.scale_female_nondominant += 1
-            puts "======== #{@guess.scale_female_nondominant}"
         end
     end
 
