@@ -15,15 +15,15 @@ How do I tackle the problem:
 
 During my research for the base data, I found out most data sets for weights are within a range like this: 
 
-height         |   male weight  |    female weight <br/>
-5'3"           |    113 - 141   |      106 - 134
+  height         |   male weight  |    female weight
+  5'3"           |    113 - 141   |      106 - 134
 
 There is a overlaps for both gender in the middle and difinitly gander domininant result on both the lower and higher end. Therefore, I boeke down the range into the following:
 
-female min  |   male min  |  female max |  male max
-106         |113          |          134|       141
-|---female--|------------ even ---------|---male---|
-  dominant               dominant         dominant  
+  female min  |   male min  |  female max |  male max
+  106         |113          |          134|       141
+  |---female--|------------ even ---------|---male---|
+    dominant               dominant         dominant  
 
 
 Assuming the data is collect from 1000 people from each gender, the guess falls in male min and female max weight will get a 50\%  chance for either gender, below male min will be 100\% female, and above female max will be 100\% male initially according to the base data.
