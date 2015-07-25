@@ -15,7 +15,7 @@ How do I tackle the problem:
 
 During my research for the base data, I found out most data sets for weights are within a range like this: 
 
-height         |   male weight  |    female weight
+height         |   male weight  |    female weight <br/>
 5'3"           |    113 - 141   |      106 - 134
 
 There is a overlaps for both gender in the middle and difinitly gander domininant result on both the lower and higher end. Therefore, I boeke down the range into the following:
