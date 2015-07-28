@@ -18,7 +18,7 @@
   <div class="form-group row">
     <%= f.label "Weight (lb)", :class => 'control-label col-lg-4' %>
     <div class="col-lg-offset-2 col-lg-4">
-      <input id="weight" type="text" class="form-control" name="weight">
+      <input id="weight" type="text" class="form-control" name="weight" type="number">
     </div>
     <%=f.error_span(:weight) %>
   </div>
@@ -36,7 +36,7 @@
   <div class="form-group row">
     <div class="col-lg-offset-4 col-lg-10">
         <span id="result"></span>
-      <%= f.submit "Guess my gender", :class => 'btn btn-primary' %>
+      <%= f.submit "Guess my gender", :class => 'btn btn-primary', :id =>"guess_gender" %>
       <!-- <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 guesses_path, :class => 'btn btn-default' %> -->
     </div>
