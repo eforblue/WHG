@@ -4,13 +4,14 @@ require 'rails_helper'
 describe GuessesController do
 
     describe "GET #create" do
-        it "should successfully provide a guess" do
+        it "should only take integer for weight input" do
             visit root_path
 
             weight = rand(70..250)
-            puts "==== input weight: #{weight}"
             fill_in "weight", :with => weight
-
+            fill_in "height", :with => 55
+            click_on "guess_gender"
+            
         end
     end
 
