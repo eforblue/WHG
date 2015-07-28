@@ -19,14 +19,14 @@ ActiveRecord::Schema.define(version: 20150720151606) do
     t.integer  "weight_male_min",          limit: 4
     t.integer  "weight_female_max",        limit: 4
     t.integer  "weight_male_max",          limit: 4
-    t.integer  "scale_female_dominant",    limit: 4
-    t.integer  "scale_male_nondominant",   limit: 4
-    t.integer  "scale_female_even",        limit: 4
-    t.integer  "scale_male_even",          limit: 4
-    t.integer  "scale_female_nondominant", limit: 4
-    t.integer  "scale_male_dominant",      limit: 4
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
+    t.integer  "scale_female_dominant",    limit: 4, default: 1000
+    t.integer  "scale_male_nondominant",   limit: 4, default: 0
+    t.integer  "scale_female_even",        limit: 4, default: 1000
+    t.integer  "scale_male_even",          limit: 4, default: 1000
+    t.integer  "scale_female_nondominant", limit: 4, default: 0
+    t.integer  "scale_male_dominant",      limit: 4, default: 1000
+    t.datetime "created_at",                                        null: false
+    t.datetime "updated_at",                                        null: false
   end
 
 end
